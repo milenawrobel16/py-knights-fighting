@@ -1,4 +1,3 @@
-from app.KNIGHTS import KNIGHTS
 from app.KnightStats import Knight
 
 
@@ -15,17 +14,11 @@ def battle(knights: dict) -> dict:
     arthur.hp -= red_knight.power - arthur.protection
     red_knight.hp -= arthur.power - red_knight.protection
 
-    if lancelot.hp < 0:
-        lancelot.hp = 0
+    knights_list = [lancelot, mordred, arthur, red_knight]
 
-    if mordred.hp < 0:
-        mordred.hp = 0
-
-    if arthur.hp < 0:
-        arthur.hp = 0
-
-    if red_knight.hp < 0:
-        red_knight.hp = 0
+    for knight in knights_list:
+        if knight.hp < 0:
+            knight.hp = 0
 
     return {
         lancelot.name: lancelot.hp,
@@ -33,6 +26,3 @@ def battle(knights: dict) -> dict:
         mordred.name: mordred.hp,
         red_knight.name: red_knight.hp
     }
-
-
-print(battle(KNIGHTS))
